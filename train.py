@@ -121,7 +121,7 @@ def get_args():
                         choices=['train', 'test', 'lr_find'])
     parser.add_argument('--SEED', '-S', default=1, type=int, help='Random Seed')
     parser.add_argument('--dataset', '-D', default='MNIST', type=str,
-                        help='Dataset--CIFAR10, MNIST, or...')
+                        help='Dataset--MNIST, or...')
     parser.add_argument('--img_size', '-I', default=(28, 28), type=tuple,
                         help='Image Size')
     parser.add_argument('--batch_size', '-b', default=512, type=int,
@@ -172,15 +172,11 @@ def get_args():
 
 def get_dataset_mean_std():
     """
-    Get the CIFAR10/MNIST/etc. dataset mean and std to be used as tuples
+    Get the MNIST dataset mean and std to be used as tuples
     @ transforms.Normalize
     """
     # load the training data
-    global args
-    if args.dataset == 'CIFAR10':
-        dataset_train = datasets.CIFAR10('./data', train=True, download=True)
-    elif args.dataset == 'MNIST':
-        dataset_train = datasets.MNIST('./data', train=True, download=True)
+    dataset_train = datasets.MNIST('./data', train=True, download=True)
     # use np.concatenate to stick all the images together to form a 1600000 X
     # 32 X 3 array
     x = np.concatenate([np.asarray(dataset_train[i][0]) for i in
