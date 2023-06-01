@@ -159,7 +159,7 @@ def get_args():
                         help='L2-penalty/weight_decay to be used or not?')
     parser.add_argument('--data', '-s', default='./data/',
                         help='path to save train/test data')
-    parser.add_argument('--best_model_path', default='./saved_models/',
+    parser.add_argument('--best_model_path', default='./',
                         help='best model saved path')
     parser.add_argument('--prefix', '-p', default='data', type=str,
                         help='folder prefix')
